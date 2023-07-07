@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
-//import {useCookies} from 'react-cookie'
+import {useCookies} from 'react-cookie'
 import {Avatar, Box, Button, Grid, Paper, TextField, Typography, Snackbar, IconButton, Alert} from "@mui/material"
 import CloseIcon from '@mui/icons-material/Close'
 import {teal} from "@mui/material/colors"
@@ -19,7 +19,7 @@ const Signin: React.FC<Props> = (): JSX.Element => {
   const [showSignupBtn, setshowSignupBtn] = useState("block")
   const [msg, setMsg] = useState("")
 
-  //const [_, setCookie] = useCookies(["token"])
+  const [_, setCookie] = useCookies(["authtoken"])
   const chgLoginid = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => setLoginid(e.target.value)
   const chgPassword = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => setPassword(e.target.value)
   const chgUsername = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => setUsername(e.target.value)
@@ -39,6 +39,7 @@ const Signin: React.FC<Props> = (): JSX.Element => {
         username: data.username
       }
       window.sessionStorage.setItem("session", JSON.stringify(Session))
+      setCookie("authtoken", data.cookie)
       navigate('/notes')
 
     }, (e: any) => {
@@ -69,6 +70,7 @@ const Signin: React.FC<Props> = (): JSX.Element => {
         username: username
       }
       window.sessionStorage.setItem("session", JSON.stringify(Session))
+      setCookie("authtoken", data.cookie)
       navigate('/notes')
 
     }, (e: any) => {
