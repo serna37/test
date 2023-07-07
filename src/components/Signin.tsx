@@ -39,7 +39,8 @@ const Signin: React.FC<Props> = (): JSX.Element => {
         username: data.username
       }
       window.sessionStorage.setItem("session", JSON.stringify(Session))
-      setCookie("authtoken", data.cookie, {path:"/test"})
+      setCookie("authtoken", data.cookie, {path:"/"})
+      setCookie("authtoken", data.cookie, {path:"/test/notes"})
       navigate('/notes')
 
     }, (e: any) => {
@@ -70,7 +71,8 @@ const Signin: React.FC<Props> = (): JSX.Element => {
         username: username
       }
       window.sessionStorage.setItem("session", JSON.stringify(Session))
-      setCookie("authtoken", data.cookie, {path:"/test"})
+      setCookie("authtoken", data.cookie, {path:"/"})
+      setCookie("authtoken", data.cookie, {path:"/test/notes"})
       navigate('/notes')
 
     }, (e: any) => {
