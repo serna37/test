@@ -2,9 +2,6 @@ import axios from "axios"
 
 const DOMAIN = window.location.host.startsWith("localhost") ? "http://localhost:8181" : "https://neras-sta.com"
 
-export const URLs = {
-  Signin: "/usr/signin"
-}
 export const Ajax = {
   POST: (uri: string, data: any, callback: any, err: any) => {
     console.debug(`${DOMAIN}/mk6v2${uri}`)
@@ -17,7 +14,7 @@ export const Ajax = {
         if (err === undefined || err === null) {
           return
         }
-        err(e)
+        err(e.response.data)
       })
   }
 }

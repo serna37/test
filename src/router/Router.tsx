@@ -7,7 +7,7 @@ export default function Router() {
   // <BrowserRouter basename='/'>
   return (
     <div>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename='/'>
         <Routes>
           <Route path='/' element={<Signin />}></Route>
           <Route path='/notes' element={<Tabs />}></Route>
