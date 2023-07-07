@@ -5,7 +5,7 @@ import {Avatar, Box, Button, Grid, Paper, TextField, Typography, Snackbar, IconB
 import CloseIcon from '@mui/icons-material/Close'
 import {teal} from "@mui/material/colors"
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
-import {Ajax } from '../util/Ajax'
+import {Ajax} from '../util/Ajax'
 
 type Props = {}
 
@@ -39,8 +39,9 @@ const Signin: React.FC<Props> = (): JSX.Element => {
         username: data.username
       }
       window.sessionStorage.setItem("session", JSON.stringify(Session))
-      setCookie("authtoken", data.cookie, {path:"/"})
-      setCookie("authtoken", data.cookie, {path:"/test/notes"})
+      setCookie("authtoken", data.cookie, {path: "/"})
+      setCookie("authtoken", data.cookie, {path: "/test/notes"})
+      setCookie("authtoken", data.cookie, {domain: "neras-sta.com", path: "/"})
       navigate('/notes')
 
     }, (e: any) => {
@@ -71,8 +72,9 @@ const Signin: React.FC<Props> = (): JSX.Element => {
         username: username
       }
       window.sessionStorage.setItem("session", JSON.stringify(Session))
-      setCookie("authtoken", data.cookie, {path:"/"})
-      setCookie("authtoken", data.cookie, {path:"/test/notes"})
+      setCookie("authtoken", data.cookie, {path: "/"})
+      setCookie("authtoken", data.cookie, {path: "/test/notes"})
+      setCookie("authtoken", data.cookie, {domain: "neras-sta.com", path: "/"})
       navigate('/notes')
 
     }, (e: any) => {
