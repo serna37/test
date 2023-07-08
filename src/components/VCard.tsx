@@ -8,14 +8,19 @@ import {Contents} from './Tabs'
 import {Modal} from '@mui/material'
 import DModal from './DModal'
 
+type EditCon = Contents & {
+  refresh: any
+}
 
 /** card component */
-const VCard: React.FC<Contents> = (props): JSX.Element => {
+const VCard: React.FC<EditCon> = (props): JSX.Element => {
 
   const {categoryId, id, title, content, tags} = props
   const [modalOpen, setModalOpen] = useState(false)
   function modalClose() {
     setModalOpen(false)
+    props.refresh()
+    console.debug("detail modal close")
   }
 
   // menu open/close

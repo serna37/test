@@ -32,7 +32,6 @@ const Chatroomlist: React.FC<Props> = (_): JSX.Element => {
         console.log(data.message)
         return
       }
-      console.log(data)
       setRooms(data)
     }, (e: any) => {
       console.log(e)

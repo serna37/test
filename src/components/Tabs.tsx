@@ -115,7 +115,6 @@ const Tabs: React.FC<Props> = (): JSX.Element => {
   // tab
   const [tabIdx, setTabIdx] = useState('0')
   const handleChange = (_: React.SyntheticEvent, newValue: string) => {
-    //order()
     setTabIdx(newValue)
     setTagsPerCategory(tagsall.find(v => v.Id == dataall[~~newValue].Id))
     setTagsCondition([])
@@ -138,6 +137,8 @@ const Tabs: React.FC<Props> = (): JSX.Element => {
   // modal close
   function modalClose() {
     setModalOpen(false)
+    getDatas()
+    console.debug("add modal close")
   }
 
   // search drawer
@@ -233,7 +234,7 @@ const Tabs: React.FC<Props> = (): JSX.Element => {
                 })
                 .map((content, idx) => (
                   <Grid item xs={2} sm={4} md={3} key={idx} sx={{p: 1}}>
-                    <VCard categoryId={0} id={content.Id} title={content.Title} content={content.Contents} tags={content.Tags} />
+                    <VCard categoryId={0} id={content.Id} title={content.Title} content={content.Contents} tags={content.Tags} refresh={getDatas} />
                   </Grid>
                 ))}
             </Grid>

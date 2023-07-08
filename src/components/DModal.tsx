@@ -9,7 +9,6 @@ import {Ajax} from '../util/Ajax'
 import {Button, Snackbar, Alert} from "@mui/material"
 import CloseIcon from '@mui/icons-material/Close'
 
-
 /** card component */
 const DModal: React.FC<Contents> = (props): JSX.Element => {
 
