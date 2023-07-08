@@ -72,14 +72,14 @@ const VCard: React.FC<EditCon> = (props): JSX.Element => {
         </CardContent>
         <Divider />
         <CardContent sx={{pt: 0, pb: 0, pr: 1, pl: 1}}>
-          <Typography sx={{fontSize: 16, overflow: 'hidden', textOverflow: 'ellipsis'}} color='text.secondary'>
+          <Typography sx={{fontSize: 16, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace:'pre-wrap'}} color='text.secondary'>
             {content}
           </Typography>
         </CardContent>
       </CardActionArea>
 
       {/** sub info */}
-      <CardActions sx={{pt: 0, height: 20}}>
+      <CardActions sx={{pt: 10, height: '100%'}}>
         <Grid container alignItems='center'>
           {/** view */}
           {tags.map((tag, tidx) => (
