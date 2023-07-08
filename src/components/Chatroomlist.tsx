@@ -1,24 +1,13 @@
 import React, {useEffect, useState} from 'react'
-import axios from 'axios'
-import {Box, Grid, Typography} from '@mui/material'
-import {Card, CardContent, CardMedia, CardActions} from '@mui/material'
-import {Stack, Chip} from '@mui/material'
-import {ImageList, ImageListItem} from '@mui/material'
-import {Paper, BottomNavigation, BottomNavigationAction} from '@mui/material'
-import {IconButton, Menu, MenuItem, ListItemIcon} from '@mui/material'
-import {Close, Favorite, MoreVert, Edit, Delete} from '@mui/icons-material'
+import {Grid, Typography} from '@mui/material'
+import {IconButton} from '@mui/material'
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import CommentIcon from '@mui/icons-material/Comment'
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import ImageIcon from '@mui/icons-material/Image';
-import WorkIcon from '@mui/icons-material/Work';
 import Divider from '@mui/material/Divider';
 import {Ajax} from '../util/Ajax'
 import Chatroom from './Chatroom'
-import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 
 type Props = {}
 type Rooms = {
@@ -31,10 +20,7 @@ export type Msg = {
   FromAt: string
   Msg: string
 }
-const Chatroomlist: React.FC<Props> = (props): JSX.Element => {
-
-  //const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
+const Chatroomlist: React.FC<Props> = (_): JSX.Element => {
 
   const [rooms, setRooms] = useState<Rooms[]>([])
 
@@ -73,23 +59,20 @@ const Chatroomlist: React.FC<Props> = (props): JSX.Element => {
     ws.onmessage = (msg) => {
       console.log('onmessage start')
       let msgJson = JSON.parse(msg.data)
-      console.log(msgJson)
 
       // shot message
       if (msgJson[0] === undefined) {
-        console.log(msglist)
-      let arr = JSON.parse(window.sessionStorage.getItem(`chat${v.Id}`) ?? "")
-    console.log(arr)
-    arr.push({
-      Id: 0,
-      FromId: msgJson.userId,
-      FromAt: new Date() + "",
-      Msg: msgJson.msg
-    })
-    window.sessionStorage.setItem(`chat${v.Id}`, JSON.stringify(arr))
-    setMsglist(arr)
-    const list = document.getElementById('chatbody')
-    list?.scrollTo(0, list?.scrollHeight)
+        let arr = JSON.parse(window.sessionStorage.getItem(`chat${v.Id}`) ?? "")
+        arr.push({
+          Id: 0,
+          FromId: msgJson.userId,
+          FromAt: new Date() + "",
+          Msg: msgJson.msg
+        })
+        window.sessionStorage.setItem(`chat${v.Id}`, JSON.stringify(arr))
+        setMsglist(arr)
+        const list = document.getElementById('chatbody')
+        list?.scrollTo(0, list?.scrollHeight)
         console.log('onmessage shot end')
         return
       }
@@ -98,8 +81,8 @@ const Chatroomlist: React.FC<Props> = (props): JSX.Element => {
       setMsglist(msgJson)
       // store session
       window.sessionStorage.setItem(`chat${v.Id}`, JSON.stringify(msgJson))
-    const list = document.getElementById('chatbody')
-    list?.scrollTo(0, list?.scrollHeight)
+      const list = document.getElementById('chatbody')
+      list?.scrollTo(0, list?.scrollHeight)
       console.log('onmessage ini end')
     }
 

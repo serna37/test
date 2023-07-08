@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
-import axios from 'axios'
 import {Box, Grid, Typography} from '@mui/material'
-import {Card, CardContent, CardActionArea, CardMedia, CardActions} from '@mui/material'
+import {Card, CardContent, CardActionArea, CardActions} from '@mui/material'
 import {IconButton, Menu, MenuItem, ListItemIcon, ListItemText, Stack, Chip} from '@mui/material'
 import Divider from '@mui/material/Divider';
-import {Favorite, MoreVert, Edit, Delete} from '@mui/icons-material'
+import {MoreVert, Edit, Delete} from '@mui/icons-material'
 import {Contents} from './Tabs'
 import {Modal} from '@mui/material'
 import DModal from './DModal'
@@ -14,59 +13,9 @@ import DModal from './DModal'
 const VCard: React.FC<Contents> = (props): JSX.Element => {
 
   const {categoryId, id, title, content, tags} = props
-
-
-
-  // for modal
-  const [cntnt, setCntnt] = useState<Contents>({
-    categoryId: 0,
-    id: 0,
-    title: "",
-    content: "",
-    tags: [{
-      Id: 0,
-      ContentId: 0,
-      TagId: 0,
-      MstTags: {
-        Id: 0,
-        Name: ""
-      }
-    }]
-  })
-
-
-
-
   const [modalOpen, setModalOpen] = useState(false)
   function modalClose() {
     setModalOpen(false)
-  }
-
-  //  const {id, category: type, thumbnail, title} = props
-  //  const [viewCnt, setViewCnt] = useState(props.viewCnt)
-  //  const [likeCnt, setLikeCnt] = useState(props.likeCnt)
-
-  // view detail
-  function view() {
-    // XXX view on modal = 
-    //    // view + 1
-    //    axios.post('https://neras-sta.com/mk6/view', {id: id}, {withCredentials: true})
-    //    //axios.post('http://localhost:8080/mk6/view', {id: id}, {withCredentials: true})
-    //      .then(_ => setViewCnt(viewCnt + 1))
-    //    // modal open
-    //    sessionStorage.setItem('detail', JSON.stringify(props))
-    //    // set latest view/fav
-    //    sessionStorage.setItem('viewCnt', viewCnt + 1 + "")
-    //    sessionStorage.setItem('likeCnt', likeCnt + "")
-    //    const dmodal: any = document.getElementById('detail-modal-open')
-    //    dmodal.click()
-  }
-
-  // favorite
-  function favo() {
-    //    axios.post('https://neras-sta.com/mk6/fav', {id: id}, {withCredentials: true})
-    //    //axios.post('http://localhost:8080/mk6/fav', {id: id}, {withCredentials: true})
-    //      .then(_ => setLikeCnt(likeCnt + 1))
   }
 
   // menu open/close
@@ -77,9 +26,8 @@ const VCard: React.FC<Contents> = (props): JSX.Element => {
 
   // edit
   function edit() {
-    // XXX 編集画面作る, 追加画面と同じコンポーネント、確定でDBにいく
-    console.log('edit')
-    setCntnt(props) // TODO いらんくね
+    console.debug(categoryId)
+    console.debug(id)
     setModalOpen(true)
     handleClose()
   }
@@ -90,8 +38,6 @@ const VCard: React.FC<Contents> = (props): JSX.Element => {
     console.log("delete")
     handleClose()
   }
-
-
 
 
   const modalStyle = {
@@ -133,8 +79,7 @@ const VCard: React.FC<Contents> = (props): JSX.Element => {
           {/** view */}
           {tags.map((tag, tidx) => (
             <Stack key={tidx} direction="row" spacing={1} useFlexGap flexWrap="wrap">
-              <Chip key={tag.MstTags.Id} label={tag.MstTags.Name} onClick={() => console.log(tag.MstTags.Name)} />
-
+              <Chip key={tag.MstTags.Id} label={tag.MstTags.Name} onClick={() => console.debug(tag.MstTags.Name)} />
             </Stack>
           ))}
           {/** crud action */}
@@ -162,8 +107,6 @@ const VCard: React.FC<Contents> = (props): JSX.Element => {
           <DModal {...props} />
         </Box>
       </Modal>
-
-
     </Card>
   )
 }

@@ -10,7 +10,7 @@ export const Ajax = {
         callback(res.data)
       })
       .catch(e => {
-        console.log(e.response.status)
+        console.debug(e.response.status)
         if (err === undefined || err === null) {
           return
         }
