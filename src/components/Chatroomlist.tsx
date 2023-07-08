@@ -50,8 +50,8 @@ const Chatroomlist: React.FC<Props> = (_): JSX.Element => {
     setOpenRoomName(v.Name)
     setOpenFlg(true)
 
-    let host = window.location.host.startsWith("localhost") ? "localhost:8181" : "neras-sta.com"
-    const ws = new WebSocket(`ws://${host}/mk6v2/msg/${v.Id}`)
+    let host = window.location.host.startsWith("localhost") ? "ws://localhost:8181" : "wss://neras-sta.com"
+    const ws = new WebSocket(`${host}/mk6v2/msg/${v.Id}`)
     const userId: string = JSON.parse(window.sessionStorage.getItem("session") ?? "0").userid + ""
 
     // sync
