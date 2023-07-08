@@ -42,6 +42,7 @@ const Chatroomlist: React.FC<Props> = (_): JSX.Element => {
   const [openRoomName, setOpenRoomName] = useState("")
   const [openFlg, setOpenFlg] = useState(false)
   const [sendfunc, setSendfunc] = useState({fn: (_: string) => {}})
+  const [clsDunc, setClsDunc] = useState({fn: () => {}})
 
   const [msglist, setMsglist] = useState<Msg[]>([])
 
@@ -87,6 +88,7 @@ const Chatroomlist: React.FC<Props> = (_): JSX.Element => {
 
     // send
     setSendfunc({fn: (msg: string) => ws.send(JSON.stringify({userId: userId, msg: msg}))})
+    setClsDunc({fn: () => ws.close()})
   }
 
 
@@ -115,7 +117,7 @@ const Chatroomlist: React.FC<Props> = (_): JSX.Element => {
           </Grid>
         ))}
       </List>
-      <Chatroom roomid={openRoomId} roomname={openRoomName} openFlg={openFlg} flgUpd={() => setOpenFlg(false)} msglist={msglist} sendFunc={sendfunc} />
+      <Chatroom roomid={openRoomId} roomname={openRoomName} openFlg={openFlg} flgUpd={() => setOpenFlg(false)} msglist={msglist} sendFunc={sendfunc} clsDunc={clsDunc} />
     </Grid>
   )
 }

@@ -10,6 +10,7 @@ type Props = {
   flgUpd: any
   msglist: Msg[]
   sendFunc: any
+  clsDunc: any
 }
 
 const Chatroom: React.FC<Props> = (props): JSX.Element => {
@@ -41,8 +42,13 @@ const Chatroom: React.FC<Props> = (props): JSX.Element => {
     }, 300)
   }
 
+  function close() {
+    props.flgUpd()
+    props.clsDunc.fn()
+  }
+
   return (
-    <Modal open={props.openFlg} onClose={props.flgUpd}>
+    <Modal open={props.openFlg} onClose={close}>
       <Grid sx={{...modalStyle}} container direction="column" spacing={0}>
         {/** title */}
         <Grid item xs="auto">
