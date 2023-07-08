@@ -45,7 +45,7 @@ const Chatroom: React.FC<Props> = (props): JSX.Element => {
     <Modal open={props.openFlg} onClose={props.flgUpd}>
       <Grid sx={{...modalStyle}} container direction="column" spacing={0}>
         {/** title */}
-        <Grid item xs={1}>
+        <Grid item xs="auto">
           <Typography color='primary' variant={'h5'} sx={{textAlign: "center"}}>
             {`RoomName: ${props.roomname}`}
           </Typography>
@@ -53,7 +53,7 @@ const Chatroom: React.FC<Props> = (props): JSX.Element => {
         </Grid>
 
         {/** body */}
-        <Grid id="chatbody" item xs={10} sx={{overflow: 'scroll'}}>
+        <Grid id="chatbody" item xs sx={{height: '100%',overflow: 'scroll'}}>
           {props.msglist.map((v, i) => (
             <Box key={i}>
               <Grid container direction="row" spacing={1}>
@@ -70,7 +70,7 @@ const Chatroom: React.FC<Props> = (props): JSX.Element => {
         </Grid>
 
         {/** send area */}
-        <Grid item xs={1}>
+        <Grid item xs="auto">
           <Grid container direction="row" spacing={1}>
             <Grid item xs={9}>
               <TextField label="message" variant="standard" fullWidth value={msgenter} onChange={e => setMsgenter(e.target.value)} />
