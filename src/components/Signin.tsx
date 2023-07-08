@@ -143,11 +143,13 @@ const Signin: React.FC<Props> = (): JSX.Element => {
             Sign Up
           </Button>
         </Box>
+        {/**
         <Box mt={3}>
           <Button sx={{display: showSignupBtn}} type="submit" color="secondary" variant="contained" fullWidth onClick={Signup}>
             OR Create Account
           </Button>
         </Box>
+          */}
       </Paper>
     </Grid>
   )
